@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="dashboard.css" />
+    <title>Dashboard | Agenda U</title>
+</head>
+<body>
+    <!-- Menú Lateral -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-encabezado">
+            <img src="./Context/logo.png" alt="Logo Agenda U" class="sidebar-logo">
+            <span class="sidebar-nombre-app">AGENDA U</span>
+        </div>
+
+        <nav class="sidebar-menu">
+            <a href="#seccion-horario" class="menu-item">
+                <span class="menu-icono"></span>
+                <span class="menu-texto">Horario</span>
+            </a>
+            <a href="#seccion-calificaciones" class="menu-item">
+                <span class="menu-icono"></span>
+                <span class="menu-texto">Calificaciones</span>
+            </a>
+            <a href="#seccion-apuntes" class="menu-item">
+                <span class="menu-icono"></span>
+                <span class="menu-texto">Apuntes</span>
+            </a>
+            <a href="#seccion-perfil" class="menu-item">
+                <span class="menu-icono"></span>
+                <span class="menu-texto">Perfil</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="inicioSesion.html" class="boton-cerrar-sesion">
+                <span class="menu-icono"></span>
+                <span class="menu-texto">Cerrar Sesión</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Contenido Principal -->
+    <main class="contenido-principal">
+        <!-- Botón hamburguesa para móviles -->
+        <button class="boton-menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Sección Horario -->
+        <section class="seccion-dashboard" id="seccion-horario">
+            <div class="encabezado-seccion">
+                <h1>Mi Horario</h1>
+                <button class="boton-primario">Editar Horario</button>
+            </div>
+
+            <div class="contenedor-horario">
+                <table class="tabla-horario">
+                    <thead>
+                        <tr>
+                            <th>Hora</th>
+                            <th>Lunes</th>
+                            <th>Martes</th>
+                            <th>Miércoles</th>
+                            <th>Jueves</th>
+                            <th>Viernes</th>
+                            <th>Sábado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="hora">7:00 - 9:00</td>
+                            <td class="celda-clase">
+                                <div class="info-clase">
+                                    <div class="materia">Cálculo I</div>
+                                    <div class="aula">Aula 201</div>
+                                    <div class="profesor">Prof. García</div>
+                                </div>
+                            </td>
+                            <td class="celda-clase vacia"></td>
+                            <td class="celda-clase">
+                                <div class="info-clase">
+                                    <div class="materia">Cálculo I</div>
+                                    <div class="aula">Aula 201</div>
+                                    <div class="profesor">Prof. García</div>
+                                </div>
+                            </td>
+                            <td class="celda-clase vacia"></td>
+                            <td class="celda-clase">
+                                <div class="info-clase">
+                                    <div class="materia">Cálculo I</div>
+                                    <div class="aula">Aula 201</div>
+                                    <div class="profesor">Prof. García</div>
+                                </div>
+                            </td>
+                            <td class="celda-clase vacia"></td>
+                        </tr>
+                        <tr>
+                            <td class="hora">9:00 - 11:00</td>
+                            <td class="celda-clase vacia"></td>
+                            <td class="celda-clase">
+                                <div class="info-clase">
+                                    <div class="materia">Programación</div>
+                                    <div class="aula">Lab 102</div>
+                                    <div class="profesor">Prof. Martínez</div>
+                                </div>
+                            </td>
+                            <td class="celda-clase vacia"></td>
+                            <td class="celda-clase">
+                                <div class="info-clase">
+                                    <div class="materia">Programación</div>
+                                    <div class="aula">Lab 102</div>
+                                    <div class="profesor">Prof. Martínez</div>
+                                </div>
+                            </td>
+                            <td class="celda-clase vacia"></td>
+                            <td class="celda-clase vacia"></td>
+                        </tr>
+                        <tr>
+                            <td class="hora">11:00 - 13:00</td>
+                            <td class="celda-clase">
+                                <div class="info-clase">
+                                    <div class="materia">Física I</div>
+                                    <div class="aula">Aula 305</div>
+                                    <div class="profesor">Prof. López</div>
+                                </div>
+                            </td>
+                            <td class="celda-clase vacia"></td>
+                            <td class="celda-clase">
+                                <div class="info-clase">
+                                    <div class="materia">Física I</div>
+                                    <div class="aula">Aula 305</div>
+                                    <div class="profesor">Prof. López</div>
+                                </div>
+                            </td>
+                            <td class="celda-clase vacia"></td>
+                            <td class="celda-clase">
+                                <div class="info-clase">
+                                    <div class="materia">Física I</div>
+                                    <div class="aula">Aula 305</div>
+                                    <div class="profesor">Prof. López</div>
+                                </div>
+                            </td>
+                            <td class="celda-clase vacia"></td>
+                        </tr>
+                        <tr>
+                            <td class="hora">14:00 - 16:00</td>
+                            <td class="celda-clase vacia"></td>
+                            <td class="celda-clase">
+                                <div class="info-clase">
+                                    <div class="materia">Inglés</div>
+                                    <div class="aula">Aula 108</div>
+                                    <div class="profesor">Prof. Smith</div>
+                                </div>
+                            </td>
+                            <td class="celda-clase vacia"></td>
+                            <td class="celda-clase">
+                                <div class="info-clase">
+                                    <div class="materia">Inglés</div>
+                                    <div class="aula">Aula 108</div>
+                                    <div class="profesor">Prof. Smith</div>
+                                </div>
+                            </td>
+                            <td class="celda-clase vacia"></td>
+                            <td class="celda-clase vacia"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Sección Calificaciones -->
+        <section class="seccion-dashboard" id="seccion-calificaciones">
+            <div class="encabezado-seccion">
+                <h1>Mis Calificaciones</h1>
+                <button class="boton-primario">Agregar Materia</button>
+            </div>
+
+            <div class="tarjeta-promedio">
+                <h2>Promedio General</h2>
+                <div class="promedio-valor">3.8</div>
+                <div class="promedio-estado aprobado">¡Excelente rendimiento!</div>
+            </div>
+
+            <div class="grid-calificaciones">
+                <div class="tarjeta-calificacion">
+                    <h3>Cálculo I</h3>
+                    <div class="nota-actual">Nota: <span class="valor-nota aprobado">4.2</span></div>
+                    <div class="estado-materia aprobado">✓ Materia Aprobada</div>
+                </div>
+
+                <div class="tarjeta-calificacion">
+                    <h3>Programación</h3>
+                    <div class="nota-actual">Nota: <span class="valor-nota aprobado">3.5</span></div>
+                    <div class="estado-materia aprobado">✓ Materia Aprobada</div>
+                </div>
+
+                <div class="tarjeta-calificacion">
+                    <h3>Física I</h3>
+                    <div class="nota-actual">Nota: <span class="valor-nota aprobado">4.0</span></div>
+                    <div class="estado-materia aprobado">✓ Materia Aprobada</div>
+                </div>
+
+                <div class="tarjeta-calificacion">
+                    <h3>Inglés</h3>
+                    <div class="nota-actual">Nota: <span class="valor-nota riesgo">2.5</span></div>
+                    <div class="estado-materia riesgo">⚠ Necesitas 0.5 puntos más para aprobar</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Apuntes -->
+        <section class="seccion-dashboard" id="seccion-apuntes">
+            <div class="encabezado-seccion">
+                <h1>Mis Apuntes</h1>
+                <button class="boton-primario">+ Nuevo Apunte</button>
+            </div>
+
+            <div class="selector-materias">
+                <select class="select-materia">
+                    <option value="todas">Todas las materias</option>
+                    <option value="calculo">Cálculo I</option>
+                    <option value="programacion">Programación</option>
+                    <option value="fisica">Física I</option>
+                    <option value="ingles">Inglés</option>
+                </select>
+            </div>
+
+            <div class="contenedor-apuntes">
+                <div class="apunte-cuaderno">
+                    <div class="apunte-encabezado">
+                        <div class="apunte-info">
+                            <h3>Derivadas e Integrales</h3>
+                            <span class="apunte-materia">Cálculo I</span>
+                            <span class="apunte-fecha">15 Oct 2025</span>
+                        </div>
+                        <div class="apunte-acciones">
+                            <button class="boton-icono">✏️</button>
+                            <button class="boton-icono">🗑️</button>
+                        </div>
+                    </div>
+                    <div class="apunte-contenido">
+                        <p>Conceptos fundamentales sobre derivadas...</p>
+                        <p>La derivada representa la tasa de cambio instantánea de una función.</p>
+                    </div>
+                </div>
+
+                <div class="apunte-cuaderno">
+                    <div class="apunte-encabezado">
+                        <div class="apunte-info">
+                            <h3>Estructuras de Datos</h3>
+                            <span class="apunte-materia">Programación</span>
+                            <span class="apunte-fecha">18 Oct 2025</span>
+                        </div>
+                        <div class="apunte-acciones">
+                            <button class="boton-icono">✏️</button>
+                            <button class="boton-icono">🗑️</button>
+                        </div>
+                    </div>
+                    <div class="apunte-contenido">
+                        <p>Pilas, colas y listas enlazadas...</p>
+                        <p>Las estructuras de datos son fundamentales para organizar información.</p>
+                    </div>
+                </div>
+
+                <div class="apunte-cuaderno">
+                    <div class="apunte-encabezado">
+                        <div class="apunte-info">
+                            <h3>Leyes de Newton</h3>
+                            <span class="apunte-materia">Física I</span>
+                            <span class="apunte-fecha">20 Oct 2025</span>
+                        </div>
+                        <div class="apunte-acciones">
+                            <button class="boton-icono">✏️</button>
+                            <button class="boton-icono">🗑️</button>
+                        </div>
+                    </div>
+                    <div class="apunte-contenido">
+                        <p>Primera Ley: Inercia - Un objeto en reposo permanece en reposo...</p>
+                        <p>Segunda Ley: F = ma</p>
+                        <p>Tercera Ley: Acción y Reacción</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Perfil -->
+        <section class="seccion-dashboard" id="seccion-perfil">
+            <div class="encabezado-seccion">
+                <h1>Mi Perfil</h1>
+                <button class="boton-primario">Editar Perfil</button>
+            </div>
+
+            <div class="contenedor-perfil">
+                <div class="perfil-foto-seccion">
+                    <div class="foto-perfil">
+                        <img src="https://ui-avatars.com/api/?name=Usuario+Ejemplo&background=4f8a8b&color=fff&size=200" alt="Foto de perfil">
+                    </div>
+                    <button class="boton-secundario">Cambiar Foto</button>
+                </div>
+
+                <div class="perfil-info">
+                    <div class="campo-perfil">
+                        <label>Nombre Completo</label>
+                        <input type="text" value="Usuario Ejemplo" disabled>
+                    </div>
+
+                    <div class="campo-perfil">
+                        <label>Correo Electrónico</label>
+                        <input type="email" value="usuario@ejemplo.com" disabled>
+                    </div>
+
+                    <div class="campo-perfil">
+                        <label>Universidad</label>
+                        <input type="text" value="Universidad Nacional" disabled>
+                    </div>
+
+                    <div class="campo-perfil">
+                        <label>Carrera</label>
+                        <input type="text" value="Ingeniería de Sistemas" disabled>
+                    </div>
+
+                    <div class="campo-perfil">
+                        <label>Semestre</label>
+                        <input type="text" value="3" disabled>
+                    </div>
+
+                    <div class="campo-perfil">
+                        <label>Código Estudiantil</label>
+                        <input type="text" value="2023001234" disabled>
+                    </div>
+
+                    <div class="perfil-acciones" style="display: none;">
+                        <button class="boton-primario">Guardar Cambios</button>
+                        <button class="boton-secundario">Cancelar</button>
+                    </div>
+
+                    <div class="seccion-contrasena">
+                        <button class="enlace">Cambiar Contraseña</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal para Editar Clase -->
+    <div class="modal">
+        <div class="modal-contenido">
+            <div class="modal-encabezado">
+                <h2>Editar Clase</h2>
+                <button class="modal-cerrar">&times;</button>
+            </div>
+            <div class="modal-cuerpo">
+                <div class="campo-formulario">
+                    <label>Materia</label>
+                    <input type="text" placeholder="Nombre de la materia">
+                </div>
+                <div class="campo-formulario">
+                    <label>Aula</label>
+                    <input type="text" placeholder="Ej: Aula 201">
+                </div>
+                <div class="campo-formulario">
+                    <label>Profesor</label>
+                    <input type="text" placeholder="Nombre del profesor">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="boton-primario">Guardar</button>
+                <button class="boton-secundario">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Nuevo/Editar Apunte -->
+    <div class="modal">
+        <div class="modal-contenido modal-apunte">
+            <div class="modal-encabezado">
+                <h2>Nuevo Apunte</h2>
+                <button class="modal-cerrar">&times;</button>
+            </div>
+            <div class="modal-cuerpo">
+                <div class="campo-formulario">
+                    <label>Título</label>
+                    <input type="text" placeholder="Título del apunte">
+                </div>
+                <div class="campo-formulario">
+                    <label>Materia</label>
+                    <select>
+                        <option value="calculo">Cálculo I</option>
+                        <option value="programacion">Programación</option>
+                        <option value="fisica">Física I</option>
+                        <option value="ingles">Inglés</option>
+                    </select>
+                </div>
+                <div class="campo-formulario">
+                    <label>Contenido</label>
+                    <textarea class="textarea-cuaderno" rows="10" placeholder="Escribe tu apunte aquí..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="boton-primario">Guardar Apunte</button>
+                <button class="boton-secundario">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

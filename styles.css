@@ -1,0 +1,198 @@
+/* Reset básico para los bordes */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fuente global */
+body {
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+
+/* Encabezado superior izquierdo */
+.encabezado {
+    position: absolute; /* Posición absoluta para mantenerlo en la esquina */
+    top: 1rem; /* Espaciado superior */
+    left: 1rem; /* Espaciado izquierdo */
+    display: flex; /* Usar flexbox para organizar el contenido */
+    align-items: center; /* Alinear verticalmente */
+    gap: 1rem; /* Espacio entre elementos */
+    z-index: 10; /* Asegurar que esté por encima de otros elementos */
+    animation: fadeSlideIn 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.logo {
+    width: 39px; /* Ancho del logo */
+    height: 39px; /* Alto del logo */
+    border-radius: 12px; /* Bordes redondeados */
+}
+
+.nombre-app {
+    font-size: 1rem; /* Tamaño de fuente */
+    color: #4f8a8b; /* Color del texto */
+    font-weight: bold; /* Negrita */
+    letter-spacing: 1px; /* Espaciado entre letras */
+}
+
+/* Estructura básica para un diseño dividido en dos secciones */
+.diseño-dividido {
+    display: flex; /* Usar flexbox para dividir el espacio */
+    min-height: 100vh; /* Altura completa de la ventana */
+    height: 100vh; /* Altura completa de la ventana */
+}
+
+/* Panel del formulario de inicio de sesión */
+.panel-formulario {
+    flex: 1; /* Ocupa la mitad del espacio */
+    background: #f0f0f0; /* Color de fondo */
+    display: flex; /* Usar flexbox para centrar el contenido */
+    align-items: center; /* Centrar verticalmente */
+    justify-content: center; /* Centrar horizontalmente */
+    animation: fadeSlideIn 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Animación para desvanecer y deslizar hacia arriba */
+@keyframes fadeSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.contenedor-formulario {
+    background: transparent; /* Fondo transparente para la tarjeta */
+    padding: 0; /* Espaciado interno */
+    box-shadow: none; /* Sin sombra */
+    min-width: 350px; /* Ancho mínimo */
+    max-width: 400px; /* Ancho máximo */
+    width: 100%; /* Ancho completo */
+    display: flex; /* Usar flexbox para organizar el contenido */
+    flex-direction: column; /* Organizar en columna */  
+    align-items: center; /* Centrar horizontalmente */
+    gap: 2rem; /* Espacio entre elementos */
+}
+
+.contenedor-formulario h2 {
+    background: linear-gradient(90deg, #497981 0%, #a0bcb5 100%); /* Degradado de color */
+    -webkit-background-clip: text; /* Recortar el fondo al texto */
+    -webkit-text-fill-color: transparent; /* Hacer el texto transparente para mostrar el fondo */
+    background-clip: text; /* Recortar el fondo al texto */
+    font-size: 2rem; /* Tamaño de fuente */
+    margin-bottom: 1rem; /* Espacio inferior */
+    text-align: center; /* Centrar el texto */
+}
+
+.contenedor-formulario form {
+    width: 100%; /* Ancho completo del formulario */
+    display: flex; /* Usar flexbox para organizar los campos */
+    flex-direction: column; /* Organizar en columna */
+    gap: 1.2rem; /* Espacio entre campos */
+}
+
+.contenedor-formulario input[type="email"],
+.contenedor-formulario input[type="password"],
+.contenedor-formulario input[type="text"] {
+    width: 100%; /* Ancho completo */
+    padding: 0.9rem; /* Espaciado interno */
+    border: 1.5px solid #4f8a8b; /* Borde */
+    border-radius: 50px; /* Bordes redondeados */
+    font-size: 0.8rem; /* Tamaño de fuente */
+    background: #f0f0f0 ;
+    color: #222; /* Color del texto */  
+    outline: none; /* Sin contorno al enfocar */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: scale(1);
+}
+
+.contenedor-formulario input[type="email"]:focus,
+.contenedor-formulario input[type="password"]:focus,
+.contenedor-formulario input[type="text"]:focus {
+    border: 2px solid transparent; /* Borde transparente al enfocar */
+    background: 
+        linear-gradient(#f0f0f0, #f0f0f0) padding-box, /* Fondo del input */
+        linear-gradient(90deg, #497981 0%, #a0bcb5 100%) border-box; /* Borde con degradado */
+    background-origin: padding-box, border-box; /* Origen del fondo */
+    background-clip: padding-box, border-box; /* Recorte del fondo */
+    outline: none; /* Sin contorno al enfocar */
+    transform: scale(1.01);
+    box-shadow: 0 4px 12px rgba(79, 138, 139, 0.15);
+}
+
+.boton-primario {
+    width: 100%; /* Ancho completo */
+    padding: 0.9rem; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 50px; /* Bordes redondeados */
+    background: linear-gradient(90deg, #497981 50%, #a0bcb5 100%); /* Color de fondo */
+    color: white; /* Color del texto */
+    font-size: 1rem; /* Tamaño de fuente */
+    font-weight: bold; /* Negrita */
+    cursor: pointer; /* Cambiar cursor al pasar sobre el botón */
+    transition: background 0.3s, transform 0.3s;
+}
+
+.boton-primario:hover { /* HOVER: Cambiar color de fondo al pasar sobre el botón */
+    background: linear-gradient(90deg, #497981 0%, #a0bcb5 100%);
+    transform: scale(1.01);
+}
+
+
+.opciones-formulario {
+    display: flex; /* Usar flexbox para organizar las opciones */
+    justify-content: space-between; /* Espacio entre las opciones */
+    align-items: center; /* Alinear verticalmente */
+    font-size: 0.9rem; /* Tamaño de fuente */
+}
+
+.enlace {
+    color: #4f8a8b; /* Color del enlace */
+    text-decoration: none; /* Sin subrayado */
+    font-size: 0.9rem; /* Tamaño de fuente */
+}
+
+.enlace:hover { /* HOVER: Subrayado al pasar sobre el enlace */
+    text-decoration: underline;
+}
+
+.opciones-formulario input[type="checkbox"] {
+    accent-color: #4f8a8b; /* Color del mockup */
+    width: 20px; /* Tamaño del checkbox */
+    height: 20px; /* Tamaño del checkbox */
+    cursor: pointer; /* Cambiar cursor al pasar sobre el checkbox */
+    margin-right: 0.5rem; /* Espacio a la derecha */
+    accent-color: #4f8a8b; /* Color del checkbox */
+}
+
+.opciones-formulario label {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    color: #357376;
+    cursor: pointer;
+    accent-color: #4f8a8b; /* Color del checkbox */
+}
+
+.opciones-formulario input[type="checkbox"]:hover { /* HOVER: Cambiar color al pasar sobre el checkbox */
+    box-shadow: 0 0 0 3px #cbeaed;
+}
+
+/* Panel visual con imagen de fondo */
+.panel-visual {
+    flex: 1; /* Ocupa la mitad del espacio */
+    width: 100%; /* Ancho completo */
+    height: 100vh; /* Altura completa de la ventana */
+    background:   
+        linear-gradient(135deg, #4f8a8b88 60%, #cbeaedcc 100%), /* Degradado superpuesto */
+        url('https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg?auto=compress&w=800') no-repeat center center/cover;
+    background-size: cover; /* Cubrir todo el panel */
+    display: flex; /* Usar flexbox para centrar el contenido */
+    align-items: center; /* Centrar verticalmente */
+    justify-content: center; /* Centrar horizontalmente */
+}
+

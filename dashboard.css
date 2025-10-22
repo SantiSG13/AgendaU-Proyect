@@ -1,0 +1,744 @@
+/* ===== DASHBOARD LAYOUT ===== */
+body {
+    overflow-x: hidden;
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 260px;
+    height: 100vh;
+    background: linear-gradient(180deg, #4f8a8b 0%, #3d6f70 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 0;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+}
+
+.sidebar-encabezado {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 1.5rem 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.sidebar-nombre-app {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.sidebar-menu {
+    flex: 1;
+    padding: 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-left: 3px solid transparent;
+    text-decoration: none;
+}
+
+.menu-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+/* Estilos para el item activo según el target */
+a.menu-item[href="#seccion-horario"]:not(:has(~ :target)),
+#seccion-horario:target ~ aside a.menu-item[href="#seccion-horario"],
+#seccion-calificaciones:target ~ aside a.menu-item[href="#seccion-calificaciones"],
+#seccion-apuntes:target ~ aside a.menu-item[href="#seccion-apuntes"],
+#seccion-perfil:target ~ aside a.menu-item[href="#seccion-perfil"] {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    border-left-color: #a0bcb5;
+}
+
+.menu-icono {
+    font-size: 1.3rem;
+}
+
+.menu-texto {
+    font-weight: 500;
+}
+
+.sidebar-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.boton-cerrar-sesion {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+
+.boton-cerrar-sesion:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.contenido-principal {
+    margin-left: 260px;
+    padding: 2rem;
+    min-height: 100vh;
+    background: #f5f5f5;
+    transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.boton-menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0.5rem;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1001;
+}
+
+.boton-menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: #4f8a8b;
+    border-radius: 2px;
+    transition: all 0.3s;
+}
+
+/* ===== SECCIONES DEL DASHBOARD ===== */
+.seccion-dashboard {
+    display: none;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Mostrar Horario por defecto */
+#seccion-horario {
+    display: block;
+}
+
+/* Cuando una sección es target, mostrarla */
+.seccion-dashboard:target {
+    display: block;
+}
+
+/* Cuando hay un target, ocultar Horario */
+body:has(#seccion-calificaciones:target) #seccion-horario,
+body:has(#seccion-apuntes:target) #seccion-horario,
+body:has(#seccion-perfil:target) #seccion-horario {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.encabezado-seccion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.encabezado-seccion h1 {
+    background: linear-gradient(90deg, #497981 0%, #a0bcb5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 2rem;
+    margin: 0;
+}
+
+/* ===== HORARIO ===== */
+.contenedor-horario {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    overflow-x: auto;
+}
+
+.tabla-horario {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+}
+
+.tabla-horario th {
+    background: linear-gradient(90deg, #497981 0%, #a0bcb5 100%);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    font-weight: 600;
+    border: none;
+}
+
+.tabla-horario th:first-child {
+    border-top-left-radius: 8px;
+}
+
+.tabla-horario th:last-child {
+    border-top-right-radius: 8px;
+}
+
+.tabla-horario td {
+    padding: 0.5rem;
+    border: 1px solid #e0e0e0;
+    text-align: center;
+    vertical-align: top;
+    min-height: 80px;
+}
+
+.tabla-horario td.hora {
+    background: #f8f8f8;
+    font-weight: 600;
+    color: #4f8a8b;
+}
+
+.celda-clase {
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.celda-clase:hover {
+    background: #f0f9f9;
+}
+
+.celda-clase.vacia {
+    background: #fafafa;
+}
+
+.info-clase {
+    padding: 0.5rem;
+    text-align: left;
+}
+
+.info-clase .materia {
+    font-weight: 600;
+    color: #497981;
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+}
+
+.info-clase .aula,
+.info-clase .profesor {
+    font-size: 0.75rem;
+    color: #666;
+    margin-bottom: 0.2rem;
+}
+
+/* ===== CALIFICACIONES ===== */
+.tarjeta-promedio {
+    background: linear-gradient(135deg, #497981 0%, #a0bcb5 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 12px rgba(79, 138, 139, 0.3);
+}
+
+.tarjeta-promedio h2 {
+    margin: 0 0 1rem 0;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.promedio-valor {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.promedio-estado {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.grid-calificaciones {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.tarjeta-calificacion {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.tarjeta-calificacion:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.tarjeta-calificacion h3 {
+    color: #4f8a8b;
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+}
+
+.nota-actual {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 0.8rem;
+}
+
+.valor-nota {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-left: 0.5rem;
+}
+
+.valor-nota.aprobado {
+    color: #4caf50;
+}
+
+.valor-nota.riesgo {
+    color: #ff9800;
+}
+
+.estado-materia {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.estado-materia.aprobado {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.estado-materia.riesgo {
+    background: #fff3e0;
+    color: #e65100;
+}
+
+/* ===== APUNTES ===== */
+.selector-materias {
+    margin-bottom: 2rem;
+}
+
+.select-materia {
+    width: 100%;
+    max-width: 300px;
+    padding: 0.8rem 1rem;
+    border: 2px solid #4f8a8b;
+    border-radius: 25px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    background: white;
+    color: #333;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.select-materia:focus {
+    border-color: #a0bcb5;
+    box-shadow: 0 0 0 3px rgba(79, 138, 139, 0.1);
+}
+
+.contenedor-apuntes {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.apunte-cuaderno {
+    background: 
+        linear-gradient(90deg, #e53935 0px, #e53935 2px, transparent 2px, transparent 40px),
+        repeating-linear-gradient(
+            transparent,
+            transparent 29px,
+            #d1d5db 29px,
+            #d1d5db 30px
+        ),
+        white;
+    background-size: 100% 100%, 100% 30px;
+    background-position: 0 0, 0 10px;
+    border-radius: 8px;
+    padding: 2rem 2rem 2rem 3rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.apunte-encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #4f8a8b;
+}
+
+.apunte-info h3 {
+    color: #4f8a8b;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.3rem;
+}
+
+.apunte-materia {
+    display: inline-block;
+    background: #4f8a8b;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    margin-right: 0.5rem;
+}
+
+.apunte-fecha {
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.apunte-acciones {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.boton-icono {
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.3rem;
+    transition: transform 0.2s;
+}
+
+.boton-icono:hover {
+    transform: scale(1.2);
+}
+
+.apunte-contenido {
+    line-height: 30px;
+    color: #333;
+}
+
+.apunte-contenido p {
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== PERFIL ===== */
+.contenedor-perfil {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 3rem;
+}
+
+.perfil-foto-seccion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.foto-perfil {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #4f8a8b;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.foto-perfil img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.perfil-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.campo-perfil {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.campo-perfil label {
+    font-weight: 600;
+    color: #4f8a8b;
+    font-size: 0.9rem;
+}
+
+.campo-perfil input {
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    background: #f9f9f9;
+    transition: all 0.3s;
+}
+
+.campo-perfil input:disabled {
+    cursor: not-allowed;
+}
+
+.campo-perfil input:enabled {
+    background: white;
+    border-color: #4f8a8b;
+}
+
+.campo-perfil input:focus {
+    outline: none;
+    border-color: #a0bcb5;
+    box-shadow: 0 0 0 3px rgba(79, 138, 139, 0.1);
+}
+
+.perfil-acciones {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.seccion-contrasena {
+    padding-top: 1rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+.boton-secundario {
+    padding: 0.8rem 1.5rem;
+    border: 2px solid #4f8a8b;
+    border-radius: 25px;
+    background: white;
+    color: #4f8a8b;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.boton-secundario:hover {
+    background: #4f8a8b;
+    color: white;
+}
+
+/* ===== MODALES ===== */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-contenido {
+    background: white;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+.modal-apunte {
+    max-width: 700px;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.modal-encabezado h2 {
+    margin: 0;
+    color: #4f8a8b;
+    font-size: 1.5rem;
+}
+
+.modal-cerrar {
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    color: #999;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.3s;
+}
+
+.modal-cerrar:hover {
+    color: #333;
+}
+
+.modal-cuerpo {
+    padding: 1.5rem;
+}
+
+.campo-formulario {
+    margin-bottom: 1.5rem;
+}
+
+.campo-formulario label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #4f8a8b;
+}
+
+.campo-formulario input,
+.campo-formulario select,
+.campo-formulario textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+}
+
+.campo-formulario input:focus,
+.campo-formulario select:focus,
+.campo-formulario textarea:focus {
+    outline: none;
+    border-color: #4f8a8b;
+    box-shadow: 0 0 0 3px rgba(79, 138, 139, 0.1);
+}
+
+.textarea-cuaderno {
+    background: 
+        repeating-linear-gradient(
+            transparent,
+            transparent 29px,
+            #d1d5db 29px,
+            #d1d5db 30px
+        );
+    background-size: 100% 30px;
+    line-height: 30px;
+    padding-top: 5px;
+}
+
+.modal-footer {
+    padding: 1.5rem;
+    border-top: 2px solid #e0e0e0;
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .contenido-principal {
+        margin-left: 0;
+        padding: 1rem;
+        padding-top: 4rem;
+    }
+
+    .boton-menu-toggle {
+        display: flex;
+    }
+
+    .encabezado-seccion {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .contenedor-perfil {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .grid-calificaciones {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-contenido {
+        width: 95%;
+    }
+}
